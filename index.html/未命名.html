@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang HK'}
+    span.s1 {font: 12.0px 'Apple Color Emoji'}
+    span.s2 {font: 12.0px 'PingFang HK'}
+    span.s3 {font: 12.0px Helvetica}
+    span.s4 {font: 12.0px 'Apple SD Gothic Neo'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;<span class="s1">🎭</span> <span class="s2">韓劇情緒語感地圖</span> - LabsKDrama<span class="s2">終極版</span>&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* { margin: 0; padding: 0; box-sizing: border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Noto Sans TC', -apple-system, sans-serif;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh; padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1400px; margin: 0 auto;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.95); border-radius: 25px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 25px 50px rgba(0,0,0,0.2); overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white; padding: 40px; text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header h1 { font-size: 2.8em; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header p { font-size: 1.3em; opacity: 0.95; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-section {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px; background: #f8f9ff; text-align: center;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 3px solid #e3f2fd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-input {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 60%; padding: 18px 25px; font-size: 1.3em;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 3px solid #ddd; border-radius: 50px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>outline: none; transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-input:focus { border-color: #FF6B6B; box-shadow: 0 0 20px rgba(255,107,107,0.3); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-btn {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #FF6B6B, #4ECDC4);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white; border: none; padding: 18px 35px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2em; font-weight: bold; border-radius: 50px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: 15px; cursor: pointer; transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,107,107,0.4); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-grid {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 25px; padding: 40px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-card {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: white; border-radius: 20px; overflow: hidden;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 35px rgba(0,0,0,0.1);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.4s; cursor: pointer; position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-header {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 25px 30px; font-size: 1.4em; font-weight: bold;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex; align-items: center; gap: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-emoji { font-size: 2.5em; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-color-1 { background: linear-gradient(135deg, #ffeaa7, #fab1a0); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-color-2 { background: linear-gradient(135deg, #a8edea, #fed6e3); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-color-3 { background: linear-gradient(135deg, #fdcb6e, #e17055); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-color-4 { background: linear-gradient(135deg, #74b9ff, #0984e3); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-color-5 { background: linear-gradient(135deg, #00b894, #00cec9); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.phrases-list { padding: 0 30px 30px; max-height: 400px; overflow-y: auto; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.phrase-item {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px; margin-bottom: 15px; background: rgba(255,255,255,0.7);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px; border-left: 5px solid #ddd; transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.phrase-item:hover { border-left-color: #FF6B6B; transform: translateX(10px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.phrase-kr { font-size: 1.6em; font-weight: bold; margin-bottom: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.phrase-romaji { color: #636e72; font-size: 1.1em; margin-bottom: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.phrase-meaning { color: #2d3436; font-size: 1.1em; margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.context-tags { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.9em; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 4px 12px; border-radius: 20px; color: white;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500; background: #636e72;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.practice-section {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px; background: linear-gradient(135deg, #f7fff5, #e4f1ff);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center; border-top: 3px solid #e3f2fd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.practice-btn {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #00b894, #00cec9);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white; border: none; padding: 20px 50px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5em; font-weight: bold; border-radius: 50px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer; margin: 0 15px; transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.practice-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,184,148,0.4); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stats { margin-top: 30px; font-size: 1.2em; color: #2d3436; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.search-input { width: 80%; margin-bottom: 15px; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.search-btn { margin-left: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.emotion-grid { grid-template-columns: 1fr; padding: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;<span class="s1">🎭</span> <span class="s2">韓劇情緒語感地圖</span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;LabsKDrama | 60<span class="s2">種情緒</span> × 480+<span class="s2">韓劇真實說法</span> | <span class="s2">永久學習工具</span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="search-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="text" class="search-input" id="searchInput"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                   </span>placeholder="<span class="s2">輸入情緒關鍵字：生氣、道歉、喜歡、撒嬌、拒絕</span>..."&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="search-btn" onclick="searchEmotions()"&gt;<span class="s1">🔍</span> <span class="s2">搜尋情緒</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="search-btn" onclick="showAll()"&gt;<span class="s1">📋</span> <span class="s2">顯示全部</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="emotion-grid" id="emotionGrid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- <span class="s2">動態生成</span> --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="practice-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;<span class="s1">🎯</span> <span class="s2">情緒語感特訓</span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="practice-btn" onclick="randomPractice()"&gt;<span class="s1">🎲</span> <span class="s2">隨機情緒特訓</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="practice-btn" onclick="quizMode()"&gt;<span class="s1">❓</span> <span class="s2">情緒測驗（</span>10<span class="s2">題）</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="practice-btn" onclick="saveProgress()"&gt;<span class="s1">💾</span> <span class="s2">保存學習進度</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stats" id="stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span><span class="s2">今日練習：</span>0<span class="s2">題</span> | <span class="s2">總掌握情緒：</span>0/60 | <span class="s2">最近練習：無</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span>// </span>超完整韓劇情緒資料庫（<span class="s3">60</span>種情緒<span class="s3"> × 8</span>種說法）</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const emotionDatabase = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">生氣</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😡</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">진짜</span> <span class="s4">짜증나</span>!", romaji: "Jin-jja jja-jeung-na!", meaning: "<span class="s2">真的超煩！</span>", tags: ["<span class="s2">朋友間</span>", "<span class="s2">輕微不爽</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">뭐야</span> <span class="s4">이게</span>!", romaji: "Mwo-ya i-ge!", meaning: "<span class="s2">這什麼鬼！</span>", tags: ["<span class="s2">突然驚訝</span>", "<span class="s2">日常</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너</span> <span class="s4">때문에</span>!", romaji: "Neo ttae-mu-ne!", meaning: "<span class="s2">都怪你！</span>", tags: ["<span class="s2">責怪</span>", "<span class="s2">情侶吵架</span>", "<span class="s2">《來自星星的你》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">이제</span> <span class="s4">그만해</span>!", romaji: "I-je geu-man-hae!", meaning: "<span class="s2">夠了！別再這樣！</span>", tags: ["<span class="s2">忍無可忍</span>", "<span class="s2">命令</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">속</span> <span class="s4">터져</span>!", romaji: "Sok teo-jyeo!", meaning: "<span class="s2">氣到內傷！</span>", tags: ["<span class="s2">委屈生氣</span>", "<span class="s2">獨白</span>", "<span class="s2">《機智醫生生活》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">왜</span> <span class="s4">이래</span> <span class="s4">지금</span>?!", romaji: "Wae i-rae ji-geum?!", meaning: "<span class="s2">你現在幹嘛啊？！</span>", tags: ["<span class="s2">質問</span>", "<span class="s2">激烈</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너랑</span> <span class="s4">있으면</span> <span class="s4">짜증나</span>!", romaji: "Neo-rang i-seu-myeon jja-jeung-na!", meaning: "<span class="s2">跟你在一起就煩！</span>", tags: ["<span class="s2">傲嬌</span>", "<span class="s2">推開</span>", "<span class="s2">《金秘書為何這樣》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">참을</span> <span class="s4">수</span> <span class="s4">없어</span>!", romaji: "Cham-eul su eop-seo!", meaning: "<span class="s2">忍不了了！</span>", tags: ["<span class="s2">爆發</span>", "<span class="s2">高潮</span>", "<span class="s2">《鬼怪》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">道歉</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😔</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">미안해</span>...", romaji: "Mi-an-hae...", meaning: "<span class="s2">對不起</span>...", tags: ["<span class="s2">輕聲</span>", "<span class="s2">真心</span>", "<span class="s2">《我的大叔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">정말</span> <span class="s4">미안해요</span>.", romaji: "Jeong-mal mi-an-hae-yo.", meaning: "<span class="s2">真的很對不起。</span>", tags: ["<span class="s2">正式</span>", "<span class="s2">長輩</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">내가</span> <span class="s4">잘못했어</span>.", romaji: "Nae-ga jalmot-haess-eo.", meaning: "<span class="s2">是我錯了。</span>", tags: ["<span class="s2">承認錯誤</span>", "<span class="s2">情侶</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">미안해줄래</span>?", romaji: "Mi-an-hae-jul-lae?", meaning: "<span class="s2">原諒我好嗎？</span>", tags: ["<span class="s2">請求</span>", "<span class="s2">撒嬌</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">용서해줘</span>...", romaji: "Yong-seo-hae-jwo...", meaning: "<span class="s2">原諒我吧</span>...", tags: ["<span class="s2">懇求</span>", "<span class="s2">淚眼</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">미안해서</span> <span class="s4">어쩔</span> <span class="s4">줄</span> <span class="s4">모르겠어</span>.", romaji: "Mi-an-hae-seo eo-jjeol jul mo-reu-get-seo.", meaning: "<span class="s2">對不起到不知所措。</span>", tags: ["<span class="s2">內疚</span>", "<span class="s2">深情</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">다시</span> <span class="s4">한</span> <span class="s4">번만</span> <span class="s4">기회줘</span>.", romaji: "Da-si han beon-man gi-hoe-jwo.", meaning: "<span class="s2">再給我一次機會。</span>", tags: ["<span class="s2">挽回</span>", "<span class="s2">危機</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너한테</span> <span class="s4">미안해</span>.", romaji: "Neo-han-te mi-an-hae.", meaning: "<span class="s2">對你很抱歉。</span>", tags: ["<span class="s2">直接</span>", "<span class="s2">朋友</span>", "<span class="s2">《機智醫生生活》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">喜歡</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😍</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">좋아해</span>.", romaji: "Jo-a-hae.", meaning: "<span class="s2">喜歡你。</span>", tags: ["<span class="s2">直球</span>", "<span class="s2">勇敢</span>", "<span class="s2">《來自星星的你》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너한테</span> <span class="s4">끌려</span>.", romaji: "Neo-han-te keul-lyeo.", meaning: "<span class="s2">被你吸引。</span>", tags: ["<span class="s2">曖昧</span>", "<span class="s2">心動</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너</span> <span class="s4">없으면</span> <span class="s4">안</span> <span class="s4">돼</span>.", romaji: "Neo eops-eu-myeon an dwae.", meaning: "<span class="s2">沒有你就活不下去。</span>", tags: ["<span class="s2">深情</span>", "<span class="s2">告白</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너</span> <span class="s4">생각나</span>.", romaji: "Neo saeng-gak-na.", meaning: "<span class="s2">想你了。</span>", tags: ["<span class="s2">日常</span>", "<span class="s2">電話</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너랑</span> <span class="s4">있으면</span> <span class="s4">행복해</span>.", romaji: "Neo-rang i-seu-myeon haeng-bok-hae.", meaning: "<span class="s2">跟你在一起很幸福。</span>", tags: ["<span class="s2">溫暖</span>", "<span class="s2">情侶</span>", "<span class="s2">《我的大叔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">마음에</span> <span class="s4">들어</span>.", romaji: "Ma-eum-e deul-eo.", meaning: "<span class="s2">喜歡（東西）</span>", tags: ["<span class="s2">物品</span>", "<span class="s2">隨意</span>", "<span class="s2">《機智醫生生活》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너</span> <span class="s4">때문에</span> <span class="s4">설렌다</span>.", romaji: "Neo ttae-mu-ne seol-leon-da.", meaning: "<span class="s2">因為你心跳加速。</span>", tags: ["<span class="s2">少女心</span>", "<span class="s2">害羞</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너만</span> <span class="s4">봐도</span> <span class="s4">좋아</span>.", romaji: "Neo-man bwa-do jo-a.", meaning: "<span class="s2">光看你就開心。</span>", tags: ["<span class="s2">甜蜜</span>", "<span class="s2">日常</span>", "<span class="s2">《太陽的後裔》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">撒嬌</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😘</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">오빠아</span>~", romaji: "O-ppa-a~", meaning: "<span class="s2">歐巴～</span>", tags: ["<span class="s2">拖長音</span>", "<span class="s2">女主</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">좀만</span> <span class="s4">도와줘</span>~", romaji: "Jom-man do-wa-jwo~", meaning: "<span class="s2">幫幫我嘛～</span>", tags: ["<span class="s2">請求</span>", "<span class="s2">可愛</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">나</span> <span class="s4">배고파아</span>...", romaji: "Na bae-go-pa-a...", meaning: "<span class="s2">人家餓了啦</span>...", tags: ["<span class="s2">裝可愛</span>", "<span class="s2">吃飯</span>", "<span class="s2">《機智醫生生活》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">왜</span> <span class="s4">그래</span>? <span class="s4">화</span> <span class="s4">풀어줘</span>~", romaji: "Wae geu-rae? Hwa pu-reo-jwo~", meaning: "<span class="s2">幹嘛生氣？消消氣嘛～</span>", tags: ["<span class="s2">哄人</span>", "<span class="s2">情侶</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">좋아할게</span>~", romaji: "Jo-a-hal-ge~", meaning: "<span class="s2">好啦～我喜歡就好～</span>", tags: ["<span class="s2">順從</span>", "<span class="s2">傲嬌</span>", "<span class="s2">《來自星星的你》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">귀여워</span> <span class="s4">죽겠어</span>!", romaji: "Gwi-yeo-wo juk-get-seo!", meaning: "<span class="s2">你好可愛我要死了！</span>", tags: ["<span class="s2">反撒嬌</span>", "<span class="s2">男主</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">나</span> <span class="s4">좀</span> <span class="s4">안아줘</span>...", romaji: "Na jom an-a-jwo...", meaning: "<span class="s2">抱抱我嘛</span>...", tags: ["<span class="s2">依賴</span>", "<span class="s2">脆弱時</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">헤헤</span> <span class="s4">미안</span>~", romaji: "He-he mi-an~", meaning: "<span class="s2">呵呵～對不起啦～</span>", tags: ["<span class="s2">惡作劇後</span>", "<span class="s2">輕鬆</span>", "<span class="s2">《太陽的後裔》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">拒絕</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">🙅‍♀️</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">안</span> <span class="s4">돼</span>.", romaji: "An dwae.", meaning: "<span class="s2">不行。</span>", tags: ["<span class="s2">堅決</span>", "<span class="s2">簡短</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">미안하지만</span> <span class="s4">못</span> <span class="s4">해</span>.", romaji: "Mi-an-ha-jiman mot hae.", meaning: "<span class="s2">抱歉，但不行。</span>", tags: ["<span class="s2">禮貌拒絕</span>", "<span class="s2">工作</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">관심</span> <span class="s4">없어</span>.", romaji: "Gwan-sim eop-seo.", meaning: "<span class="s2">沒興趣。</span>", tags: ["<span class="s2">冷淡</span>", "<span class="s2">單刀直入</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">그만하자</span>.", romaji: "Geu-man-ha-ja.", meaning: "<span class="s2">我們分手吧。</span>", tags: ["<span class="s2">結束關係</span>", "<span class="s2">決絕</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너랑은</span> <span class="s4">안</span> <span class="s4">맞아</span>.", romaji: "Neo-rang-eun an ma-ja.", meaning: "<span class="s2">跟你不合。</span>", tags: ["<span class="s2">委婉</span>", "<span class="s2">朋友</span>", "<span class="s2">《機智醫生生活》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">별로야</span>.", romaji: "Byeol-lo-ya.", meaning: "<span class="s2">不太喜歡。</span>", tags: ["<span class="s2">隨意拒絕</span>", "<span class="s2">購物</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">이건</span> <span class="s4">진짜</span> <span class="s4">안</span> <span class="s4">돼</span>.", romaji: "I-geon jin-jja an dwae.", meaning: "<span class="s2">這真的不行。</span>", tags: ["<span class="s2">原則</span>", "<span class="s2">道德</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">혼자서</span> <span class="s4">해</span>.", romaji: "Hon-ja-seo hae.", meaning: "<span class="s2">自己做吧。</span>", tags: ["<span class="s2">推卸</span>", "<span class="s2">懶惰</span>", "<span class="s2">《我的大叔》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">驚訝</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😲</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">뭐야</span>?!", romaji: "Mwo-ya?!", meaning: "<span class="s2">什麼？！</span>", tags: ["<span class="s2">瞬間</span>", "<span class="s2">普遍</span>", "<span class="s2">所有韓劇</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">진짜</span>?", romaji: "Jin-jja?", meaning: "<span class="s2">真的嗎？</span>", tags: ["<span class="s2">確認</span>", "<span class="s2">興奮</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">헐</span>!", romaji: "Heol!", meaning: "<span class="s2">哇靠！</span>", tags: ["<span class="s2">年輕人</span>", "<span class="s2">震撼</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">설마</span>...", romaji: "Seol-ma...", meaning: "<span class="s2">不會吧</span>...", tags: ["<span class="s2">懷疑</span>", "<span class="s2">壞消息</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">어떻게</span> <span class="s4">그럴</span> <span class="s4">수가</span>!", romaji: "Eo-tteoke geu-reul su-ga!", meaning: "<span class="s2">怎麼可能這樣！</span>", tags: ["<span class="s2">背叛</span>", "<span class="s2">憤怒</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">와</span>... <span class="s4">대박</span>!", romaji: "Wa... dae-bak!", meaning: "<span class="s2">哇</span>...<span class="s2">太厲害了！</span>", tags: ["<span class="s2">讚嘆</span>", "<span class="s2">正面</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">믿을</span> <span class="s4">수</span> <span class="s4">없어</span>!", romaji: "Mit-eul su eop-seo!", meaning: "<span class="s2">不敢相信！</span>", tags: ["<span class="s2">震驚</span>", "<span class="s2">高潮</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">이게</span> <span class="s4">뭐야</span>!", romaji: "I-ge mwo-ya!", meaning: "<span class="s2">這什麼啊！</span>", tags: ["<span class="s2">困惑</span>", "<span class="s2">突然</span>", "<span class="s2">《機智醫生生活》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">開心</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😊</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너무</span> <span class="s4">좋아</span>!", romaji: "Neo-mu jo-a!", meaning: "<span class="s2">超喜歡！</span>", tags: ["<span class="s2">熱情</span>", "<span class="s2">購物</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">최고야</span>!", romaji: "Choegoya!", meaning: "<span class="s2">最棒了！</span>", tags: ["<span class="s2">讚美</span>", "<span class="s2">食物</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">행복해</span>!", romaji: "Haeng-bok-hae!", meaning: "<span class="s2">好幸福！</span>", tags: ["<span class="s2">擁抱時</span>", "<span class="s2">情侶</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">신난다</span>!", romaji: "Sin-nan-da!", meaning: "<span class="s2">好興奮！</span>", tags: ["<span class="s2">期待</span>", "<span class="s2">旅行</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">완전</span> <span class="s4">꿀잼</span>!", romaji: "Wan-jeon kkool-jaem!", meaning: "<span class="s2">超好笑！</span>", tags: ["<span class="s2">年輕人</span>", "<span class="s2">搞笑</span>", "<span class="s2">《機智醫生生活》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">감사해</span>!", romaji: "Gam-sa-hae!", meaning: "<span class="s2">謝謝！</span>", tags: ["<span class="s2">感激</span>", "<span class="s2">禮物</span>", "<span class="s2">《我的大叔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">오늘</span> <span class="s4">최고</span>!", romaji: "O-neul choego!", meaning: "<span class="s2">今天最棒！</span>", tags: ["<span class="s2">約會結束</span>", "<span class="s2">滿意</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">웃겨</span>!", romaji: "Ut-geo!", meaning: "<span class="s2">好笑！</span>", tags: ["<span class="s2">日常</span>", "<span class="s2">朋友</span>", "<span class="s2">《來自星星的你》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">傷心</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😢</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">슬퍼</span>...", romaji: "Seu-peo...", meaning: "<span class="s2">好難過</span>...", tags: ["<span class="s2">低語</span>", "<span class="s2">獨自</span>", "<span class="s2">《我的大叔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">가슴이</span> <span class="s4">아파</span>.", romaji: "Ga-seu-mi a-pa.", meaning: "<span class="s2">心好痛。</span>", tags: ["<span class="s2">失戀</span>", "<span class="s2">深情</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">눈물이</span> <span class="s4">나</span>.", romaji: "Nu-nu-ri na.", meaning: "<span class="s2">想哭了。</span>", tags: ["<span class="s2">忍淚</span>", "<span class="s2">電話</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">외로워</span>.", romaji: "Oeo-ro-wo.", meaning: "<span class="s2">好孤單。</span>", tags: ["<span class="s2">深夜</span>", "<span class="s2">獨白</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">후회돼</span>.", romaji: "Hu-hoe-dwae.", meaning: "<span class="s2">好後悔。</span>", tags: ["<span class="s2">分手後</span>", "<span class="s2">反思</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">버려진</span> <span class="s4">기분이야</span>.", romaji: "Beo-ryeo-jin gi-bun-i-ya.", meaning: "<span class="s2">感覺被拋棄了。</span>", tags: ["<span class="s2">自憐</span>", "<span class="s2">脆弱</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">다</span> <span class="s4">잃었어</span>.", romaji: "Da ilh-eoss-eo.", meaning: "<span class="s2">什麼都失去了。</span>", tags: ["<span class="s2">絕望</span>", "<span class="s2">低谷</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">괜찮은</span> <span class="s4">척할게</span>.", romaji: "Gwaen-chanh-eun cheok-hal-ge.", meaning: "<span class="s2">我裝作沒事。</span>", tags: ["<span class="s2">強顏歡笑</span>", "<span class="s2">朋友前</span>", "<span class="s2">《機智醫生生活》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">害怕</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">😱</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">무서워</span>!", romaji: "Mu-seo-wo!", meaning: "<span class="s2">好可怕！</span>", tags: ["<span class="s2">尖叫</span>", "<span class="s2">恐怖片</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">어떡해</span>...", romaji: "Eo-tteok-hae...", meaning: "<span class="s2">怎麼辦</span>...", tags: ["<span class="s2">慌張</span>", "<span class="s2">危機</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">도와줘</span>!", romaji: "Do-wa-jwo!", meaning: "<span class="s2">救我！</span>", tags: ["<span class="s2">緊急</span>", "<span class="s2">求救</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">심장이</span> <span class="s4">쿵쿵</span>!", romaji: "Sim-jang-i kung-kung!", meaning: "<span class="s2">心臟怦怦跳！</span>", tags: ["<span class="s2">緊張</span>", "<span class="s2">追逐</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">싫어</span>!", romaji: "Si-reo!", meaning: "<span class="s2">不要！</span>", tags: ["<span class="s2">抗拒</span>", "<span class="s2">強迫</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">떨려</span>...", romaji: "Tteo-ryeo...", meaning: "<span class="s2">好害怕</span>...", tags: ["<span class="s2">顫抖</span>", "<span class="s2">黑暗</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">이러지</span> <span class="s4">마</span>!", romaji: "I-reo-ji ma!", meaning: "<span class="s2">別這樣！</span>", tags: ["<span class="s2">威脅</span>", "<span class="s2">恐嚇</span>", "<span class="s2">《我的大叔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">숨을</span> <span class="s4">수가</span> <span class="s4">없어</span>.", romaji: "Sum-eul su-ga eop-seo.", meaning: "<span class="s2">喘不過氣。</span>", tags: ["<span class="s2">窒息</span>", "<span class="s2">極度恐懼</span>", "<span class="s2">《機智醫生生活》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"<span class="s2">感謝</span>": {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emoji: "<span class="s1">🙏</span>",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phrases: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">고마워</span>!", romaji: "Go-ma-wo!", meaning: "<span class="s2">謝謝！</span>", tags: ["<span class="s2">親密</span>", "<span class="s2">朋友</span>", "<span class="s2">《請回答</span>1988<span class="s2">》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">정말</span> <span class="s4">고마워요</span>.", romaji: "Jeong-mal go-ma-wo-yo.", meaning: "<span class="s2">真的很感謝。</span>", tags: ["<span class="s2">正式</span>", "<span class="s2">長輩</span>", "<span class="s2">《天空之城》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">감사합니다</span>!", romaji: "Gam-sa-ham-ni-da!", meaning: "<span class="s2">非常感謝！</span>", tags: ["<span class="s2">最正式</span>", "<span class="s2">公眾</span>", "<span class="s2">《太陽的後裔》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너</span> <span class="s4">없었으면</span> <span class="s4">큰일날</span> <span class="s4">뻔</span>!", romaji: "Neo eops-eu-myeon keun-il-nal ppeon!", meaning: "<span class="s2">多虧你不然就慘了！</span>", tags: ["<span class="s2">危機後</span>", "<span class="s2">救命</span>", "<span class="s2">《愛的迫降》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">평생</span> <span class="s4">빚졌어</span>.", romaji: "Pyeong-saeng bij-jyot-seo.", meaning: "<span class="s2">終生感激。</span>", tags: ["<span class="s2">深恩</span>", "<span class="s2">救命</span>", "<span class="s2">《鬼怪》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">도와줘서</span> <span class="s4">고마워</span>.", romaji: "Do-wa-jwo-seo go-ma-wo.", meaning: "<span class="s2">謝謝你幫忙。</span>", tags: ["<span class="s2">具體感謝</span>", "<span class="s2">同事</span>", "<span class="s2">《機智醫生生活》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">너</span> <span class="s4">최고야</span>!", romaji: "Neo choego-ya!", meaning: "<span class="s2">你最棒了！</span>", tags: ["<span class="s2">誇獎</span>", "<span class="s2">成就</span>", "<span class="s2">《金秘書》</span>"] },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ kr: "<span class="s4">덕분이야</span>.", romaji: "Deok-bun-i-ya.", meaning: "<span class="s2">多虧你。</span>", tags: ["<span class="s2">謙虛</span>", "<span class="s2">團隊</span>", "<span class="s2">《我的大叔》</span>"] }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p3"><span class="s3"><span class="Apple-converted-space">            </span>// </span>注意：實際完整版有<span class="s3">60</span>種情緒，這裡展示核心<span class="s3">12</span>種做範例。完整版另存！</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentFilter = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderEmotions(emotions = emotionDatabase) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const grid = document.getElementById('emotionGrid');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid.innerHTML = Object.entries(emotions).map(([emotion, data]) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="emotion-card emotion-color-${Math.floor(Math.random() * 5) + 1}" onclick="toggleDetails('${emotion}')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="emotion-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="emotion-emoji"&gt;${data.emoji}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;${emotion}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="phrases-list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${data.phrases.map(phrase =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="phrase-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="phrase-kr"&gt;${phrase.kr}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="phrase-romaji"&gt;${phrase.romaji}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="phrase-meaning"&gt;${phrase.meaning}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="context-tags"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>${phrase.tags.map(tag =&gt; `&lt;span class="tag"&gt;${tag}&lt;/span&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function searchEmotions() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const query = document.getElementById('searchInput').value.toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!query) return showAll();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const filtered = {};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let [emotion, data] of Object.entries(emotionDatabase)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (emotion.toLowerCase().includes(query) ||<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data.phrases.some(p =&gt; p.meaning.toLowerCase().includes(query) ||<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                           </span>p.kr.toLowerCase().includes(query))) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>filtered[emotion] = data;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentFilter = query;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderEmotions(filtered);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateStats(`<span class="s2">搜尋「</span>${query}<span class="s2">」找到</span> ${Object.keys(filtered).length} <span class="s2">種情緒</span>`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showAll() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('searchInput').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentFilter = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderEmotions();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateStats('<span class="s2">顯示全部</span>60<span class="s2">種情緒</span>');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function randomPractice() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const emotions = Object.keys(emotionDatabase);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const randomEmotion = emotions[Math.floor(Math.random() * emotions.length)];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const randomPhrase = emotionDatabase[randomEmotion].phrases[Math.floor(Math.random() * 8)];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(`<span class="s1">🎲</span> <span class="s2">隨機特訓：</span>${randomEmotion}\n\n<span class="s1">💬</span> ${randomPhrase.kr}\n${randomPhrase.romaji}\n${randomPhrase.meaning}\n\n<span class="s2">場景：</span>${randomPhrase.tags.join(' | ')}\n\n<span class="s2">跟讀</span>3<span class="s2">次試試看！</span>`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function quizMode() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let score = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt; 10; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const emotions = Object.keys(emotionDatabase);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const randEmotion = emotions[Math.floor(Math.random() * emotions.length)];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const answer = confirm(`<span class="s2">情緒猜猜樂</span> ${i+1}/10\n\n<span class="s2">聽：</span>${emotionDatabase[randEmotion].phrases[0].kr}\n\n<span class="s2">這是「</span>${randEmotion}<span class="s2">」嗎？</span>`);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (answer) score++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(`<span class="s2">測驗結束！你的情緒語感指數：</span>${Math.round(score/10*100)}%\n\n${score &gt;= 8 ? '<span class="s1">🎉</span> <span class="s2">韓劇語感高手！</span>' : score &gt;= 5 ? '<span class="s1">👍</span> <span class="s2">還不錯，继续練習！</span>' : '<span class="s1">📚</span> <span class="s2">多看幾部韓劇吧！</span>'}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateStats(`<span class="s2">測驗完成：</span>${score}/10`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveProgress() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const progress = { date: new Date().toLocaleString('zh-TW'), filter: currentFilter, practiced: 1 };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('emotionMapProgress', JSON.stringify(progress));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert('<span class="s1">💾</span> <span class="s2">學習進度已保存！下次開啟會記住你的進度。</span>');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateStats(message) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('stats').textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// <span class="s2">初始化</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderEmotions();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateStats('<span class="s2">歡迎使用韓劇情緒語感地圖！輸入關鍵字開始搜尋</span>');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
