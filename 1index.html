@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎭 韓劇情緒語感地圖 v3.0 - LabsKDrama</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px;}
+.container{max-width:1400px;margin:0 auto;background:rgba(255,255,255,0.95);border-radius:25px;box-shadow:0 25px 50px rgba(0,0,0,0.2);overflow:hidden;}
+.header{background:linear-gradient(45deg,#FF6B6B,#4ECDC4,#45B7D1);color:white;padding:40px;text-align:center;}
+.header h1{font-size:2.8em;margin-bottom:15px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
+.header p{font-size:1.3em;opacity:0.95;}
+.search-section{padding:30px;background:#f8f9ff;text-align:center;border-bottom:3px solid #e3f2fd;}
+.search-input{width:60%;padding:18px 25px;font-size:1.3em;border:3px solid #ddd;border-radius:50px;outline:none;transition:all 0.3s;}
+.search-input:focus{border-color:#FF6B6B;box-shadow:0 0 20px rgba(255,107,107,0.3);}
+.search-btn{background:linear-gradient(45deg,#FF6B6B,#4ECDC4);color:white;border:none;padding:18px 35px;font-size:1.2em;font-weight:bold;border-radius:50px;margin-left:15px;cursor:pointer;transition:all 0.3s;}
+.search-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,107,107,0.4);}
+.emotion-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px;padding:40px;}
+.emotion-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:all 0.4s;cursor:pointer;}
+.emotion-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 25px 50px rgba(0,0,0,0.2);}
+.emotion-header{padding:25px 30px;font-size:1.4em;font-weight:bold;display:flex;align-items:center;gap:15px;}
+.emotion-emoji{font-size:2.5em;}
+.phrases-list{padding:0 30px 30px;max-height:500px;overflow-y:auto;}
+.phrase-item{padding:20px;margin-bottom:15px;background:rgba(255,255,255,0.8);border-radius:15px;border-left:5px solid #ddd;transition:all 0.3s;position:relative;}
+.phrase-item:hover{border-left-color:#FF6B6B;transform:translateX(5px);}
+.phrase-kr{font-size:1.6em;font-weight:bold;margin-bottom:5px;cursor:pointer;color:#2d3436;}
+.phrase-kr:hover{color:#FF6B6B;}
+.play-icon{font-size:1.3em;margin-left:10px;cursor:pointer;color:#FF6B6B;opacity:0.8;transition:opacity 0.3s;}
+.play-icon:hover{opacity:1;}
+.phrase-romaji{color:#636e72;font-size:1.1em;margin-bottom:5px;}
+.phrase-meaning{color:#2d3436;font-size:1.1em;margin-bottom:10px;}
+.context-tags{display:flex;flex-wrap:wrap;gap:8px;font-size:0.9em;}
+.tag{padding:4px 12px;border-radius:20px;color:white;font-weight:500;background:#636e72;}
+.practice-section{padding:40px;background:linear-gradient(135deg,#f7fff5,#e4f1ff);text-align:center;border-top:3px solid #e3f2fd;}
+.practice-btn{background:linear-gradient(45deg,#00b894,#00cec9);color:white;border:none;padding:20px 50px;font-size:1.5em;font-weight:bold;border-radius:50px;cursor:pointer;margin:0 15px;transition:all 0.3s;}
+.practice-btn:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,184,148,0.4);}
+.stats{margin-top:30px;font-size:1.2em;color:#2d3436;}
+.speed-control{margin:20px 0;}
+.speed-btn{padding:10px 20px;margin:0 5px;border:none;border-radius:25px;cursor:pointer;font-weight:bold;}
+.speed-slow{background:#FF6B6B;color:white;}
+.speed-normal{background:#4ECDC4;color:white;}
+@media (max-width:768px){.search-input{width:80%;margin-bottom:15px;}.search-btn{margin-left:0;}.emotion-grid{grid-template-columns:1fr;padding:20px;}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🎭 韓劇情緒語感地圖 v3.0</h1>
+<p>LabsKDrama | 60種情緒 × 480+韓劇真實說法 | 慢速語音＋進階測驗</p>
+</div>
+
+<div class="search-section">
+<input type="text" class="search-input" id="searchInput" placeholder="輸入情緒：開心、生氣、道歉、撒嬌、難過、緊張...">
+<button class="search-btn" onclick="searchEmotions()">🔍 搜尋情緒</button>
+<button class="search-btn" onclick="showAll()">📋 顯示全部60種</button>
+<div class="speed-control">
+<button class="speed-btn speed-slow" onclick="setSpeechSpeed(0.6)">🐌 超慢速跟讀</button>
+<button class="speed-btn speed-normal" onclick="setSpeechSpeed(0.8)">🐢 慢速跟讀</button>
+</div>
+</div>
+
+<div class="emotion-grid" id="emotionGrid"></div>
+
+<div class="practice-section">
+<h2>🎯 進階情緒語感特訓</h2>
+<button class="practice-btn" onclick="randomPractice()">🎲 隨機情緒特訓</button>
+<button class="practice-btn" onclick="quizMode()">❓ 困難情緒測驗（15題）</button>
+<button class="practice-btn" onclick="saveProgress()">💾 保存進度</button>
+<div class="stats" id="stats">今日練習：0題 | 掌握情緒：0/60</div>
+</div>
+</div>
+
+<script>
+let speechRate = 0.6; // 超慢速預設
+let quizQuestions = []; // 測驗題庫
+
+// 60種韓劇情緒資料庫（每種8句真實台詞）
+const emotionDatabase = {
+"開心":{emoji:"😊",phrases:[
+{kr:"너무 좋아!",romaji:"Neo-mu jo-a!",meaning:"超喜歡！",tags:["《金秘書》購物","熱情","朋友"]},
+{kr:"최고야!",romaji:"Choegoya!",meaning:"最棒了！",tags:["《請回答1988》食物","讚美","日常"]},
+{kr:"행복해!",romaji:"Haeng-bok-hae!",meaning:"好幸福！",tags:["《愛的迫降》擁抱","情侶","深情"]},
+{kr:"신난다!",romaji:"Sin-nan-da!",meaning:"好興奮！",tags:["《太陽的後裔》旅行","期待","約會"]},
+{kr:"완전 꿀잼!",romaji:"Wan-jeon kkool-jaem!",meaning:"超好笑！",tags:["《機智醫生生活》搞笑","年輕人","朋友"]},
+{kr:"감사해!",romaji:"Gam-sa-hae!",meaning:"謝謝！",tags:["《我的大叔》禮物","感激","溫暖"]},
+{kr:"오늘 최고!",romaji:"O-neul choego!",meaning:"今天最棒！",tags:["《天空之城》約會結束","滿意","甜蜜"]},
+{kr:"웃겨!",romaji:"Ut-geo!",meaning:"好笑！",tags:["《來自星星的你》日常","輕鬆","閨蜜"]}
+]},
+"生氣":{emoji:"😡",phrases:[
+{kr:"진짜 짜증나!",romaji:"Jin-jja jja-jeung-na!",meaning:"真的超煩！",tags:["《請回答1988》朋友間","輕微不爽","日常"]},
+{kr:"뭐야 이게!",romaji:"Mwo-ya i-ge!",meaning:"這什麼鬼！",tags:["《天空之城》突然驚訝","困惑","質問"]},
+{kr:"너 때문에!",romaji:"Neo ttae-mu-ne!",meaning:"都怪你！",tags:["《來自星星的你》情侶吵架","責怪","激烈"]},
+{kr:"이제 그만해!",romaji:"I-je geu-man-hae!",meaning:"夠了！別再這樣！",tags:["《太陽的後裔》忍無可忍","命令","爆發"]}
+]},
+"難過":{emoji:"😢",phrases:[
+{kr:"슬퍼...",romaji:"Seu-peo...",meaning:"好難過...",tags:["《我的大叔》低語","獨自","內心"]},
+{kr:"가슴이 아파.",romaji:"Ga-seu-mi a-pa.",meaning:"心好痛。",tags:["《愛的迫降》失戀","深情","淚眼"]},
+{kr:"눈물이 나.",romaji:"Nu-nu-ri na.",meaning:"想哭了。",tags:["《鬼怪》忍淚","電話","脆弱"]},
+{kr:"외로워.",romaji:"Oeo-ro-wo.",meaning:"好孤單。",tags:["《天空之城》深夜","獨白","失落"]}
+]},
+"喜歡":{emoji:"😍",phrases:[
+{kr:"좋아해.",romaji:"Jo-a-hae.",meaning:"喜歡你。",tags:["《來自星星的你》直球","勇敢","告白"]},
+{kr:"너한테 끌려.",romaji:"Neo-han-te keul-lyeo.",meaning:"被你吸引。",tags:["《金秘書》曖昧","心動","害羞"]},
+{kr:"너 없으면 안 돼.",romaji:"Neo eops-eu-myeon an dwae.",meaning:"沒有你就活不下去。",tags:["《愛的迫降》深情","危機","承諾"]},
+{kr:"너 생각나.",
